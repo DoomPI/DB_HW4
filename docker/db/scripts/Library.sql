@@ -1,20 +1,20 @@
-CREATE SCHEMA library;
-GRANT ALL PRIVILEGES ON SCHEMA library TO lomtev_203;
+CREATE DATABASE library;
+GRANT ALL PRIVILEGES ON DATABASE library TO lomtev_203;
 
 \connect library
 
-CREATE TABLE library.Publisher
+CREATE TABLE Publisher
 (
     name    varchar PRIMARY KEY,
     address varchar
 );
 
-CREATE TABLE library.Category
+CREATE TABLE Category
 (
     name varchar PRIMARY KEY
 );
 
-CREATE TABLE library.Book
+CREATE TABLE Book
 (
     ISBN          int PRIMARY KEY,
     name          varchar,
@@ -23,13 +23,13 @@ CREATE TABLE library.Book
     numberOfPages int,
 
     publisherName varchar,
-    foreign key (publisherName) references library.Publisher (name),
+    foreign key (publisherName) references Publisher (name),
 
     categoryName  varchar,
-    foreign key (categoryName) references library.Category (name)
+    foreign key (categoryName) references Category (name)
 );
 
-CREATE TABLE library.Reader
+CREATE TABLE Reader
 (
     readerId  int PRIMARY KEY,
     firstName varchar,
@@ -38,14 +38,14 @@ CREATE TABLE library.Reader
     birthday  timestamp
 );
 
-CREATE TABLE library.BookCopy
+CREATE TABLE BookCopy
 (
-    copyNumber        int PRIMARY KEY,
-    position          varchar,
+    copyNumber      int PRIMARY KEY,
+    position        varchar,
 
-    ISBN              int,
-    foreign key (ISBN) references library.Book (ISBN),
+    ISBN            int,
+    foreign key (ISBN) references Book (ISBN),
 
     currentReaderId int,
-    foreign key (currentReaderId) references library.Reader (readerId)
+    foreign key (currentReaderId) references Reader (readerId)
 );
