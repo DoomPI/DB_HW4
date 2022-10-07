@@ -11,7 +11,7 @@ CREATE TABLE Station
 
 CREATE TABLE StationPersonnel
 (
-    persNr    varchar unique PRIMARY KEY,
+    persNr    varchar PRIMARY KEY,
     nameNum   int,
     stationNr varchar,
 
@@ -20,14 +20,21 @@ CREATE TABLE StationPersonnel
 
 CREATE TABLE Doctor
 (
+    name varchar,
     area varchar,
     rank varchar,
-    unique (persNr)
+    unique (persNr),
+
+    foreign key (persNr) references StationPersonnel (persNr)
 ) INHERITS (StationPersonnel);
 
 CREATE TABLE Caregiver
 (
-    qualification varchar
+    name          varchar,
+    qualification varchar,
+    unique (persNr),
+
+    foreign key (persNr) references StationPersonnel (persNr)
 ) INHERITS (StationPersonnel);
 
 CREATE TABLE Patient
