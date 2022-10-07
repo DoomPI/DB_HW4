@@ -11,5 +11,6 @@ services:
       - ./dz:/var/lib/postgresql/data
       - ./docker/db/scripts/Library.sql:/docker-entrypoint-initdb.d/Library.sql
       - ./docker/db/scripts/Trains.sql:/docker-entrypoint-initdb.d/Trains.sql
+      - ./docker/db/scripts/Hospital.sql:/docker-entrypoint-initdb.d/Hospital.sql
     ports:
       - "5432:5432"

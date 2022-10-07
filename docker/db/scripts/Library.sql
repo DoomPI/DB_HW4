@@ -5,7 +5,7 @@ GRANT ALL PRIVILEGES ON DATABASE library TO lomtev_203;
 
 CREATE TABLE Publisher
 (
-    name   varchar PRIMARY KEY,
+    name    varchar PRIMARY KEY,
     address varchar
 );
 
